@@ -6,15 +6,13 @@ import com.platon.browser.bean.CustomStaking;
 import com.platon.browser.config.BlockChainConfig;
 import com.platon.browser.dao.entity.*;
 import com.platon.browser.elasticsearch.dto.Block;
-import com.platon.browser.elasticsearch.dto.ESTokenTransferRecord;
 import com.platon.browser.elasticsearch.dto.Transaction;
-import com.platon.browser.v015.bean.AdjustParam;
+import com.platon.browser.v0150.bean.AdjustParam;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,10 +44,6 @@ public class TestData {
     protected List<CustomDelegation> delegationList= Collections.emptyList();
     protected List<Node> nodeList = new ArrayList<>();
     protected List<Block> blockList = Collections.emptyList();
-    protected List<Erc20Token> erc20Tokens = Collections.emptyList();
-    protected List<Erc20TokenDetailWithBLOBs> erc20TokenDetails = Collections.emptyList();
-    protected List<ESTokenTransferRecord> esTokenTransferRecords = Collections.emptyList();
-    protected List<Erc20TokenAddressRel> erc20TokenAddressRels = Collections.emptyList();
     protected List<AdjustParam> adjustParamList = new ArrayList<>();
 
     @Before
@@ -82,18 +76,6 @@ public class TestData {
                         break;
                     case "block":
                         this.blockList = JSON.parseArray(content, Block.class);
-                        break;
-                    case "erc20Token":
-                        this.erc20Tokens = JSON.parseArray(content, Erc20Token.class);
-                        break;
-                    case "erc20TokenDetail":
-                        this.erc20TokenDetails = JSON.parseArray(content, Erc20TokenDetailWithBLOBs.class);
-                        break;
-                    case "erc20TokenAddressRel":
-                        this.erc20TokenAddressRels = JSON.parseArray(content, Erc20TokenAddressRel.class);
-                        break;
-                    case "erc20TokenTransfer":
-                        this.esTokenTransferRecords = JSON.parseArray(content, ESTokenTransferRecord.class);
                         break;
                     case "adjust-data":
                         adjustParamList = JSON.parseArray(content, AdjustParam.class);
